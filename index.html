@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+        <div class="flex flex-col items-center justify-center h-screen">
+              <input id="nameInput" class=" border-red-600 outline-none border-2" type="text"
+              placeholder="Enter Your Name"
+              >
+              <button onclick={getInputValue()} class="btn bg-green-500 p-1 rounded-md mt-2 cursor-pointer">Submit</button>
+
+              <h2 id="displayName"></h2>
+        </div>
+</body>
+
+ <script>
+          function getInputValue(){
+            let storeName = document.getElementById("nameInput")?.value
+            console.log(storeName);
+            if(!storeName){
+                alert("Name not found")
+            }
+            document.getElementById("displayName").innerHTML=`<p>${storeName}</p>`;
+          }
+  
+ </script>
+
+</html>
