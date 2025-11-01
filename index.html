@@ -1,32 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
-        <div class="flex flex-col items-center justify-center h-screen">
-              <input id="nameInput" class=" border-red-600 outline-none border-2" type="text"
-              placeholder="Enter Your Name"
-              >
-              <button onclick={getInputValue()} class="btn bg-green-500 p-1 rounded-md mt-2 cursor-pointer">Submit</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
 
-              <h2 id="displayName"></h2>
+  <body>
+    <section>
+      <p id="ban">Bangladesh</p>
+
+      <button onclick="{implementStyle()}">Change Style</button>
+
+      <h1 class="text-2xl text-center font-semibold my-10">Login Form</h1>
+      <div class="w-[40%] mx-auto space-y-5">
+        <div class="flex flex-col">
+          <label>Name</label>
+          <input
+            class="border-2 border-gray-500 outline-none rounded-md p-1"
+            type="text"
+            id="nameInput"
+          />
         </div>
-</body>
 
- <script>
-          function getInputValue(){
-            let storeName = document.getElementById("nameInput")?.value
-            console.log(storeName);
-            if(!storeName){
-                alert("Name not found")
-            }
-            document.getElementById("displayName").innerHTML=`<p>${storeName}</p>`;
-          }
-  
- </script>
+        <div class="flex flex-col">
+          <label>Email</label>
+          <input
+            class="border-2 border-gray-500 outline-none rounded-md p-1"
+            type="email"
+            id="emailInput"
+          />
+        </div>
 
+        <div class="flex flex-col">
+          <label>Password</label>
+          <input
+            class="border-2 border-gray-500 outline-none rounded-md p-1"
+            type="password"
+            id="passwordInput"
+          />
+        </div>
+
+        <button
+          onclick="{getValue()}"
+          class="bg-green-500 text-white font-mono font-semibold px-2 rounded-md cursor-pointer hover:bg-red-600"
+        >
+          Sign In
+        </button>
+
+        <div id="mainDetailsDiv">
+          <button
+            id="resetDiv"
+            class="bg-green-500 text-white font-mono font-semibold px-2 rounded-md cursor-pointer hover:bg-red-600 hidden"
+            onclick="{resetDiv()}"
+          >
+            Reset
+          </button>
+          <div id="details"></div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    function getValue() {
+      let name = document.getElementById("nameInput")?.value;
+      let email = document.getElementById("emailInput")?.value;
+      let password = document.getElementById("passwordInput")?.value;
+      console.log(name, email, password);
+
+      if ((!name, !email, !password)) {
+        alert("Please Fill Up All Inputs");
+      }
+
+      if ((name, email, password)) {
+        document.getElementById("details").innerHTML = `
+                <p>Hare Is Your Details</p>
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Password: ${password}</p>
+                `;
+
+        document.getElementById("resetDiv").style.display = "flex";
+      }
+    }
+
+    function resetDiv() {
+      document.getElementById("mainDetailsDiv").innerText = "";
+    }
+
+    function implementStyle() {
+      let getBanElement = document.getElementById("ban").style;
+      getBanElement.color = "red";
+      getBanElement.border = "1px solid black";
+    }
+  </script>
 </html>
